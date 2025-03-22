@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDIX Cards - Excelência em Ensino Médico</title>
+    <style>
+      /* Reset CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Variables */
+      :root {
+        --primary: #c10000;
+        --secondary: #00a99d;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --dark-gray: #333333;
+        --medium-gray: #666666;
+        --border-radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        color: var(--dark-gray);
+        line-height: 1.6;
+        background-color: var(--white);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: var(--white);
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: #a00000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background-color: var(--secondary);
+        color: var(--white);
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn-secondary:hover {
+        background-color: #008c82;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 169, 157, 0.2);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        color: var(--dark-gray);
+        font-size: 32px;
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary);
+        margin: 15px auto 0;
+      }
+
+      .card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header */
+      header {
+        background-color: var(--white);
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--dark-gray);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Section */
+      .hero {
+        background-color: var(--white);
+        padding: 120px 0 60px;
+      }
+
+      .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+      }
+
+      .hero-text {
+        flex: 1;
+      }
+
+      .hero-title {
+        font-size: 42px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: var(--dark-gray);
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: var(--medium-gray);
+      }
+
+      .buttons-container {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+      }
+
+      /* Features Section */
+      .features {
+        background-color: var(--light-gray);
+        background-image: url("cerebro.jpeg");
+        background-size: cover; /* Em vez de 'contain' */
+        background-position: center;
+        background-blend-mode: soft-light; /* Em vez de 'overlay' */
+
+        position: relative;
+      }
+
+      .features::before {
+        background-color: rgba(245, 245, 245, 0.4); /* Reduza para 40% */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(245, 245, 245, 0.6);
+        z-index: 1;
+      }
+
+      .features .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .features-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .feature-card {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
+        background-color: rgba(0, 169, 157, 0.1);
+        border-radius: 50%;
+        color: var(--secondary);
+      }
+
+      .feature-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: var(--dark-gray);
+      }
+
+      .feature-text {
+        color: var(--medium-gray);
+        margin-bottom: 20px;
+      }
+
+      .feature-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+        padding: 15px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--secondary);
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: var(--medium-gray);
+      }
+
+      .feature-expand {
+        text-align: center;
+        color: var(--secondary);
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 5px 0;
+        margin-top: 10px;
+        transition: color 0.3s;
+      }
+
+      .feature-expand:hover {
+        color: var(--primary);
+      }
+
+      .feature-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+        margin-top: 10px;
+        font-size: 14px;
+        color: var(--medium-gray);
+      }
+
+      .feature-details.expanded {
+        max-height: 150px;
+        padding-top: 10px;
+      }
+
+      /* Card Showcase */
+      .card-showcase {
+        background-color: var(--white);
+      }
+
+      .showcase-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding-bottom: 20px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .showcase-card {
+        min-width: 270px;
+        scroll-snap-align: start;
+      }
+
+      .showcase-card-image {
+        height: 200px;
+        background-color: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 24px;
+      }
+
+      .showcase-card-content {
+        padding: 20px;
+      }
+
+      .showcase-card-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: var(--dark-gray);
+      }
+
+      .showcase-card-description {
+        color: var(--medium-gray);
+        margin-bottom: 15px;
+        height: 60px;
+      }
+
+      /* Products Section */
+      .products {
+        background-color: var(--light-gray);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .product-card {
+        padding: 20px;
+      }
+
+      .product-image {
+        height: 160px;
+        background-color: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 24px;
+        margin-bottom: 15px;
+        border-radius: var(--border-radius);
+      }
+
+      .product-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .product-details {
+        color: var(--medium-gray);
+        margin-bottom: 10px;
+      }
+
+      .product-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 15px;
+        display: block;
+        text-align: center;
+        background-color: var(--primary);
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+      }
+
+      /* Combos Section */
+      .combos {
+        background-color: var(--white);
+      }
+
+      .combos-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 1140px;
+        margin: 0 auto;
+      }
+
+      .combo-card {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .combo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .combo-tag {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--primary);
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 20px;
+        z-index: 1;
+      }
+
+      .combo-header {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .combo-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--primary);
+      }
+
+      .combo-price {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .combo-economy {
+        font-size: 14px;
+        color: var(--secondary);
+        margin-top: 5px;
+      }
+
+      .combo-content {
+        padding: 0 20px 20px;
+        flex-grow: 1;
+      }
+
+      .combo-features {
+        margin-bottom: 20px;
+        list-style-type: none;
+      }
+
+      .combo-features li {
+        padding: 8px 0;
+        position: relative;
+        padding-left: 25px;
+        font-size: 14px;
+        color: var(--medium-gray);
+      }
+
+      .combo-features li:before {
+        content: "✓";
+        color: var(--secondary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .combo-button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+        background-color: var(--primary);
+        color: var(--white);
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .combo-button:hover {
+        background-color: #a10000;
+      }
+
+      /* Payment Info */
+      .payment-info {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 20px 0;
+        flex-wrap: wrap;
+      }
+
+      .payment-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--medium-gray);
+      }
+
+      /* Footer */
+      footer {
+        background-color: #121826;
+        color: var(--white);
+        padding: 60px 0 30px;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .footer-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      .footer-description {
+        max-width: 300px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #a0aec0;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 15px;
+      }
+
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #a0aec0;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-link:hover {
+        color: var(--white);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .social-icon:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        margin-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 14px;
+        color: #a0aec0;
+      }
+
+      /* Efeito de hover para mostrar cards destacados */
+      .combo-card.hovered {
+        background-color: var(--primary);
+        color: var(--white);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .combo-card.hovered .combo-title,
+      .combo-card.hovered .combo-price {
+        color: var(--white);
+      }
+
+      .combo-card.hovered .combo-economy {
+        color: var(--white);
+        opacity: 0.9;
+      }
+
+      .combo-card.hovered .combo-features li {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .combo-card.hovered .combo-features li:before {
+        color: var(--white);
+      }
+
+      .combo-card.hovered .combo-button {
+        background-color: white;
+        color: var(--primary);
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        z-index: 99;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Responsiveness */
+      @media screen and (max-width: 768px) {
+        .hero-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-title {
+          font-size: 32px;
+        }
+
+        .buttons-container {
+          justify-content: center;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .features-container,
+        .combos-container {
+          flex-direction: column;
+        }
+
+        .section {
+          padding: 50px 0;
+        }
+
+        .feature-card {
+          min-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+<!-- Header -->
+<header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <img
+          src="logo.jpeg"
+          alt="MEDIX Logo"
+          style="height: 30px; margin-right: 10px"
+        />
+        <span style="color: #c10000; font-family: 'Hawthorne Vintage Regular', serif;">MEDIX</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Diferenciais</a>
+        <a href="#showcase">Nossos Cards</a>
+        <a href="#products">Preços</a>
+        <a href="#combos">Combos</a>
+      </nav>
+      <a href="#combos" class="btn">Comprar Agora</a>
+    </div>
+  </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-color: #00a99d; color: white">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title" style="color: white">
+            Domine a Medicina com Nossos Cards de Estudo
+          </h1>
+          <p class="hero-subtitle" style="color: white">
+            Resumos objetivos e atualizados para otimizar seu aprendizado
+            médico. Material físico de alta qualidade para seu sucesso
+            acadêmico.
+          </p>
+          <div class="buttons-container">
+            <a href="#combos" class="btn">Ver Combos</a>
+            <a
+              href="#products"
+              class="btn-secondary"
+              style="background-color: white; color: #00a99d"
+              >Catálogo Completo</a
+            >
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="imagem_medix.jpeg"
+            alt="MEDIX Cards"
+            style="
+              max-width: 100%;
+              border-radius: var(--border-radius);
+              box-shadow: var(--shadow);
+            "
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Diferenciais Section -->
+    <section id="features" class="features section">
+      <div class="container">
+        <h2 class="section-title">Diferenciais dos Nossos Cards</h2>
+        <div class="features-container">
+          <div class="card feature-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#00a99d"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="feature-title">Conteúdo Objetivo</h3>
+            <p class="feature-text">
+              Informações resumidas e claras para um aprendizado eficiente.
+            </p>
+            <div class="feature-stat">
+              <div class="stat-value" data-target="98">0</div>
+              <div class="stat-label">% de satisfação</div>
+            </div>
+            <div class="feature-expand">Saiba mais</div>
+            <div class="feature-details">
+              <p>
+                Nossos cards são desenvolvidos por especialistas que selecionam
+                apenas as informações essenciais, facilitando a memorização e
+                aprendizado rápido.
+              </p>
+            </div>
+          </div>
+          <div
+            class="card feature-card"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#00a99d"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Material Resistente</h3>
+            <p class="feature-text">
+              Cards produzidos com material durável e de alta qualidade.
+            </p>
+            <div class="feature-stat">
+              <div class="stat-value" data-target="2">0</div>
+              <div class="stat-label">anos de durabilidade</div>
+            </div>
+            <div class="feature-expand">Saiba mais</div>
+            <div class="feature-details">
+              <p>
+                Utilizamos materiais premium resistentes a rasgos, dobras e
+                líquidos, garantindo que seus cards tenham vida útil prolongada
+                mesmo com uso intenso.
+              </p>
+            </div>
+          </div>
+          <div
+            class="card feature-card"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#00a99d"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Sempre Atualizado</h3>
+            <p class="feature-text">
+              Conteúdo revisado conforme novos protocolos médicos.
+            </p>
+            <div class="feature-stat">
+              <div class="stat-value" data-target="4">0</div>
+              <div class="stat-label">atualizações por ano</div>
+            </div>
+            <div class="feature-expand">Saiba mais</div>
+            <div class="feature-details">
+              <p>
+                Nossa equipe monitora constantemente as diretrizes médicas para
+                garantir que você tenha acesso às informações mais atuais e
+                relevantes da medicina.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card Showcase Section -->
+    <section
+      class="card-showcase section"
+      id="showcase"
+      style="background-color: #00a99d"
+    >
+      <div class="container">
+        <h2 class="section-title" style="color: white">Nossos Cards</h2>
+        <div class="showcase-container">
+          <div class="card showcase-card">
+            <div
+              class="showcase-card-image"
+              style="
+                background-image: url('5.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Dermatologia</h3>
+              <p class="showcase-card-description">
+                Principais patologias dermatológicas, diagnósticos e
+                tratamentos.
+              </p>
+              <a href="#products" class="btn">Ver Detalhes</a>
+            </div>
+          </div>
+          <div class="card showcase-card">
+            <div
+              class="showcase-card-image"
+              style="
+                background-image: url('6.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">ECG</h3>
+              <p class="showcase-card-description">
+                Interpretação de eletrocardiogramas e principais alterações.
+              </p>
+              <a href="#products" class="btn">Ver Detalhes</a>
+            </div>
+          </div>
+          <div class="card showcase-card">
+            <div
+              class="showcase-card-image"
+              style="
+                background-image: url('2.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Urgência & Emergência</h3>
+              <p class="showcase-card-description">
+                Protocolos e condutas em situações de emergência médica.
+              </p>
+              <a href="#products" class="btn">Ver Detalhes</a>
+            </div>
+          </div>
+          <div class="card showcase-card">
+            <div
+              class="showcase-card-image"
+              style="
+                background-image: url('4.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">Pediatria</h3>
+              <p class="showcase-card-description">
+                Principais patologias pediátricas, diagnósticos e tratamentos.
+              </p>
+              <a href="#products" class="btn">Ver Detalhes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products section" id="products">
+      <div class="container">
+        <h2 class="section-title">Lista de Preços</h2>
+        <div class="products-grid">
+          <div class="card product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('5.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <h3 class="product-title">Dermatologia</h3>
+            <p class="product-details">
+              100 cards com principais patologias e tratamentos
+            </p>
+            <span class="product-price">R$ 129,90</span>
+            <a href="#" class="btn">Comprar</a>
+          </div>
+          <div class="card product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('6.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <h3 class="product-title">ECG</h3>
+            <p class="product-details">
+              80 cards com interpretações e diagnósticos
+            </p>
+            <span class="product-price">R$ 99,90</span>
+            <a href="#" class="btn">Comprar</a>
+          </div>
+          <div class="card product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('2.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <h3 class="product-title">Urgência & Emergência</h3>
+            <p class="product-details">120 cards com protocolos e condutas</p>
+            <span class="product-price">R$ 149,90</span>
+            <a href="#" class="btn">Comprar</a>
+          </div>
+          <div class="card product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('4.jpeg');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <h3 class="product-title">Pediatria</h3>
+            <p class="product-details">
+              90 cards com principais patologias infantis
+            </p>
+            <span class="product-price">R$ 119,90</span>
+            <a href="#" class="btn">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Combos Section -->
+<section id="combos" class="combos section" style="background-color: #00a99d; background-image: url('cerebro.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
+    <!-- Sobreposição verde semitransparente para melhor legibilidade -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 169, 157, 0.8); z-index: 1;"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="section-title" style="color: white;">Combos Especiais</h2>
+      <div class="combos-container">
+        <!-- Combo Básico -->
+        <div class="card combo-card">
+          <div class="combo-header">
+            <h3 class="combo-title">Combo Básico</h3>
+            <div class="combo-price">R$ 299,90</div>
+            <div class="combo-economy">Economia de R$ 79,70</div>
+          </div>
+          <div class="combo-content">
+            <ul class="combo-features">
+              <li>Dermatologia (100 cards)</li>
+              <li>ECG (80 cards)</li>
+              <li>Porta-crachá Grátis</li>
+              <li>Pague via PIX ou cartão</li>
+            </ul>
+            <a href="https://www.asaas.com/c/seulink-combo-basico"
+              class="combo-button">Comprar Agora</a>
+          </div>
+        </div>
+  
+        <!-- Combo Premium -->
+        <div class="card combo-card">
+          <div class="combo-tag">Mais Vendido</div>
+          <div class="combo-header">
+            <h3 class="combo-title">Combo Premium</h3>
+            <div class="combo-price">R$ 499,90</div>
+            <div class="combo-economy">Economia de R$ 149,60</div>
+          </div>
+          <div class="combo-content">
+            <ul class="combo-features">
+              <li>Todos os cards do Básico</li>
+              <li>Urgência & Emergência</li>
+              <li>Pediatria</li>
+              <li>2 Porta-crachás Grátis</li>
+              <li>Pague via PIX ou cartão</li>
+            </ul>
+            <a href="https://www.asaas.com/c/seulink-combo-premium"
+              class="combo-button">Comprar Agora</a>
+          </div>
+        </div>
+  
+        <!-- Combo Completo -->
+        <div class="card combo-card">
+          <div class="combo-header">
+            <h3 class="combo-title">Combo Completo</h3>
+            <div class="combo-price">R$ 699,90</div>
+            <div class="combo-economy">Economia de R$ 249,40</div>
+          </div>
+          <div class="combo-content">
+            <ul class="combo-features">
+              <li>Todos os cards Premium</li>
+              <li>Cards Bônus de Farmacologia</li>
+              <li>3 Porta-crachás Grátis</li>
+              <li>Frete Grátis</li>
+              <li>Desconto em lançamentos futuros</li>
+            </ul>
+            <a href="https://www.asaas.com/c/seulink-combo-completo"
+              class="combo-button">Comprar Agora</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Payment Info -->
+      <div class="payment-info">
+        <div class="payment-item" style="color: white;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <line x1="2" y1="10" x2="22" y2="10" />
+          </svg>
+          <span>Cartão em até 12x</span>
+        </div>
+        <div class="payment-item" style="color: white;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M12 8v8M8 12h8" />
+          </svg>
+          <span>PIX com 5% de desconto</span>
+        </div>
+        <div class="payment-item" style="color: white;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="1" y="3" width="15" height="13" />
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+          <span>Entrega para todo Brasil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+        <!-- Combo Completo -->
+        <div class="card combo-card">
+          <div class="combo-header">
+            <h3 class="combo-title">Combo Completo</h3>
+            <div class="combo-price">R$ 699,90</div>
+            <div class="combo-economy">Economia de R$ 249,40</div>
+          </div>
+          <div class="combo-content">
+            <ul class="combo-features">
+              <li>Todos os cards Premium</li>
+              <li>Cards Bônus de Farmacologia</li>
+              <li>3 Porta-crachás Grátis</li>
+              <li>Frete Grátis</li>
+              <li>Desconto em lançamentos futuros</li>
+            </ul>
+            
+              href="https://www.asaas.com/c/seulink-combo-completo"
+              class="combo-button"
+              >Comprar Agora</a
+            >
+          </div>
+        </div>
+      </div>
+  
+      <!-- Payment Info -->
+      <div class="payment-info">
+        <div class="payment-item" style="color: white;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <line x1="2" y1="10" x2="22" y2="10" />
+          </svg>
+          <span>Cartão em até 12x</span>
+        </div>
+        <div class="payment-item" style="color: white;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M12 8v8M8 12h8" />
+          </svg>
+          <span>PIX com 5% de desconto</span>
+        </div>
+        <div class="payment-item" style="color: white;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="1" y="3" width="15" height="13" />
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+          <span>Entrega para todo Brasil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <img
+                src="logo_univesitario.jpeg"
+                alt="MEDIX Logo"
+                style="height: 30px; margin-right: 10px"
+              />
+              <span style="color: #fff"
+                ><span style="color: #fff">MEDIX</span>
+                <span style="color: #00a99d">Cards</span></span
+              >
+            </div>
+            <p class="footer-description">
+              Transformando o estudo da medicina através de cards objetivos e
+              atualizados.
+            </p>
+            <p style="color: #a0aec0; font-size: 14px">Manaus/AM</p>
+            <div class="social-icons">
+              <a href="#" class="social-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://instagram.com/medixoficial"
+                class="social-icon"
+                target="_blank"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a href="#" class="social-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+                  />
+                  <polygon
+                    points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Contato</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="https://wa.me/5584991906520" class="footer-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#a0aec0"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                    />
+                  </svg>
+                  (84) 99190-6520
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/556199215908" class="footer-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#a0aec0"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                    />
+                  </svg>
+                  (61) 99215-9086
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contato@medixcards.com" class="footer-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#a0aec0"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  contato@medixcards.com
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Informações</h3>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Sobre Nós</a></li>
+              <li>
+                <a href="#" class="footer-link">Política de Privacidade</a>
+              </li>
+              <li><a href="#" class="footer-link">Termos de Uso</a></li>
+              <li><a href="#" class="footer-link">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 MEDIX Cards. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Botão Back to Top -->
+    <div class="back-to-top">↑</div>
+
+    <!-- Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scroll para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Efeito hover nos cards de combo
+        const comboCards = document.querySelectorAll(".combo-card");
+
+        comboCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.classList.add("hovered");
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.classList.remove("hovered");
+          });
+        });
+
+        // Contador de estatísticas
+        const statCounters = document.querySelectorAll(".stat-value");
+
+        const startCountAnimation = () => {
+          statCounters.forEach((counter) => {
+            const target = parseInt(counter.getAttribute("data-target"));
+            const duration = 2000; // ms
+            const step = target / (duration / 16); // 60fps
+
+            let current = 0;
+            const timer = setInterval(() => {
+              current += step;
+              const roundedValue = Math.round(current);
+
+              if (roundedValue >= target) {
+                counter.textContent = target;
+                clearInterval(timer);
+              } else {
+                counter.textContent = roundedValue;
+              }
+            }, 16);
+          });
+        };
+
+        // Expandir detalhes das features
+        const expandButtons = document.querySelectorAll(".feature-expand");
+
+        expandButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const details = this.nextElementSibling;
+
+            if (details.classList.contains("expanded")) {
+              details.classList.remove("expanded");
+              this.textContent = "Saiba mais";
+            } else {
+              details.classList.add("expanded");
+              this.textContent = "Recolher";
+            }
+          });
+        });
+
+        // Botão de voltar ao topo
+        const backToTopButton = document.querySelector(".back-to-top");
+
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add("visible");
+          } else {
+            backToTopButton.classList.remove("visible");
+          }
+        });
+
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Animações ao scroll
+        const animateOnScroll = function () {
+          const featureCards = document.querySelectorAll(".feature-card");
+          const productCards = document.querySelectorAll(".product-card");
+          const windowHeight = window.innerHeight;
+
+          // Animar cards de features
+          featureCards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+
+            if (cardTop < windowHeight - 150) {
+              // Adiciona um pequeno atraso para cada card
+              setTimeout(() => {
+                card.style.opacity = 1;
+                card.style.transform = "translateY(0)";
+
+                // Inicia o contador apenas na primeira vez
+                if (index === 0 && !window.countersStarted) {
+                  startCountAnimation();
+                  window.countersStarted = true;
+                }
+              }, index * 150);
+            }
+          });
+
+          // Animar cards de produtos
+          productCards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+
+            if (cardTop < windowHeight - 100) {
+              setTimeout(() => {
+                card.style.opacity = 1;
+                card.style.transform = "translateY(0)";
+              }, index * 100);
+            }
+          });
+        };
+
+        // Aplicar estilos iniciais
+        const featureCards = document.querySelectorAll(".feature-card");
+        featureCards.forEach((card) => {
+          card.style.opacity = 0;
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+
+        const productCards = document.querySelectorAll(".product-card");
+        productCards.forEach((card) => {
+          card.style.opacity = 0;
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+
+        // Iniciar animações
+        window.countersStarted = false;
+        animateOnScroll();
+        window.addEventListener("scroll", animateOnScroll);
+      });
+    </script>
+  </body>
+</html>
